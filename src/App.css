@@ -1,0 +1,18 @@
+.m-container {
+  max-width: 1080px;
+  width: 100%;
+  height: calc(100vh - 60px);
+  margin: 30px auto;
+  background: var(--contrast);
+}
+
+
+
+App {
+    text-align: center;
+  }
+  
+  .row {
+    justify-content: center;
+    margin: 15px 0;
+  }

@@ -1,0 +1,45 @@
+:root {
+    --primary: #091540;
+    --secondary: #ccc9dc;
+    --details: #3685b5;
+    --contrast: #fff;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+body {
+    background-color: var(--details);
+}
+
+h1 {
+    font-size: 6rem;
+}
+ 
+h3 {
+    font-size: 3rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.wmy-1 {
+    margin: .5rem 0;
+}
+
+.wmt-1 {
+    margin-top: .5rem;
+}
+
+
+

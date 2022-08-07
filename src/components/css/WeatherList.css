@@ -1,0 +1,14 @@
+.weather-list {
+    width: 100%;
+    height: calc(50% - 70px);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.weather-list .weather-card {
+    width: calc(100% / 5);
+    height: 250px;
+    display: flex;
+    justify-content: center;
+}
