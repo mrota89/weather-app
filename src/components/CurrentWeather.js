@@ -6,8 +6,8 @@ const CurrentWeather = ({dt, temp_min, temp_max, main, icon}) => {
   const date = new Date(dt);
   return (
     <div className="current-weather">
-      
       <div className="weather-left">
+        
         <h3 className="info">
             Roma
         </h3>
@@ -23,7 +23,7 @@ const CurrentWeather = ({dt, temp_min, temp_max, main, icon}) => {
 
       <div className="weather-right">
         <div className="parameters">
-            <h5>Temperatura perc.</h5>
+            <h5>Temp. perc.</h5>
             <h5>Umidità</h5>
             <h5>Vento</h5>
             <h5>Visibilità</h5>

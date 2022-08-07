@@ -9,6 +9,8 @@ const WeatherList = ({weathers}) => {
     const filteredForecast = weathers.filter((item) =>item.dt_txt.includes("12:00:00") && !item.dt_txt.substr(8).includes(today))
 
     return (
+        <>
+        <h5 className="text-center wmb-2">Previsioni per i prossimi 5 giorni</h5>
         <div className="weather-list">
             {filteredForecast.map(({dt_txt, main, weather}) => (
                 <div className="weather-card" key={dt_txt}>
@@ -22,6 +24,7 @@ const WeatherList = ({weathers}) => {
                 </div>
             ))} 
         </div>
+        </>
     )
 }
 

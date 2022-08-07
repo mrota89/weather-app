@@ -5,6 +5,7 @@
     align-items: center;
     justify-content: center;
     background-color: var(--secondary);
+    font-size: 1.2rem;
 }
 
 .search-bar input, .search-bar button {

@@ -1,6 +1,6 @@
 .weather-card-content {
     height: 100%;
-    width: 80%;
+    width: 90%;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -11,7 +11,8 @@
     padding: .5rem;
 }
 
-.weather-card-content .card-title, .weather-card-content .card-body {
+.weather-card-content .card-title, 
+.weather-card-content .card-body {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,4 +25,15 @@
     color: var(--contrast);
     border-radius: 30px;
     height: 35%;
+    padding-top: .2rem;
+}
+
+@media screen and (max-width: 576px) {
+    .weather-card-content {
+        width: 80%;
+    }
+
+    .weather-card-content .card-title img{
+        width: 50%;
+    }
 }

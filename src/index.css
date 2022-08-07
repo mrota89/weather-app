@@ -1,7 +1,7 @@
 :root {
     --primary: #091540;
-    --secondary: #ccc9dc;
-    --details: #3685b5;
+    --details: #ccc9dc;
+    --secondary: #3685b5;
     --contrast: #fff;
 }
 
@@ -26,7 +26,7 @@ h3 {
 }
 
 h5 {
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 .text-center {
@@ -41,5 +41,18 @@ h5 {
     margin-top: .5rem;
 }
 
+.wmb-2 {
+    margin-bottom: 1.5rem;
+}
 
+@media screen and (max-width: 768px) {
+
+    h1 {
+        font-size: 5rem;
+    }
+     
+    h3 {
+        font-size: 3rem;
+    }
+}
 

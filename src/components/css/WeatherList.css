@@ -8,7 +8,38 @@
 
 .weather-list .weather-card {
     width: calc(100% / 5);
-    height: 250px;
     display: flex;
     justify-content: center;
 }
+
+/* MEDIA QUERY */
+
+@media screen and (max-width: 1024px) {
+    .weather-list {
+        flex-wrap: wrap;
+        height: fit-content;
+    }
+
+    .weather-list .weather-card {
+        width: calc(100% / 3);
+        margin-bottom: 2rem;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .weather-list {
+        justify-content: flex-start
+    }
+
+    .weather-list .weather-card {
+        width: calc(100% / 2);
+    }
+
+}
+  
+  @media screen and (max-width: 767px) {
+    .weather-list .weather-card {
+        width: 100%;
+    }
+  }
+  /* /MEDIA QUERY */
