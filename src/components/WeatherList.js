@@ -5,19 +5,28 @@ import './css/WeatherList.css';
 const WeatherList = ({weathers}) => {
 
     //verifico il giorno corrente e filtro l'array in ingresso per ottenere lista previsioni dei 5 giorni successivi
-    const today = new Date().getDate();
-    const filteredForecast = weathers.filter((item) =>item.dt_txt.includes("12:00:00") && !item.dt_txt.substr(8).includes(today))
+    const getCurrentDate = () => {
+        let today = new Date();
+        let dd = String(today.getDate());
+        let mm = String(today.getMonth() + 1);
+        let yyyy = today.getFullYear();
+
+        return today = dd + '/' + mm + '/' + yyyy;
+    }
+    const currentDate = getCurrentDate();
+    console.log(currentDate)
+    const filteredForecast = weathers.filter((item) =>new Date(item.dt * 1000).toLocaleDateString() !== currentDate)
 
     return (
         <>
-        <h5 className="text-center wmb-2">Previsioni per i prossimi 5 giorni</h5>
+        <h4 className="text-center wmb-2">Previsioni per i prossimi 5 giorni</h4>
         <div className="weather-list">
-            {filteredForecast.map(({dt_txt, main, weather}) => (
-                <div className="weather-card" key={dt_txt}>
+            {filteredForecast.map(({dt, temp, weather}) => (
+                <div className="weather-card" key={dt}>
                 <WeatherCard 
-                    temp_max={main.temp_max} 
-                    temp_min={main.temp_min} 
-                    dt={dt_txt} 
+                    temp_max={Math.round(temp.max)} 
+                    temp_min={Math.round(temp.min)} 
+                    dt={dt} 
                     main={weather[0].description} 
                     icon={weather[0].icon} 
                     />

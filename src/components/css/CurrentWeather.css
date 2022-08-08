@@ -4,30 +4,46 @@
   display: flex;
   align-items: stretch;
   justify-content: space-around;
-  margin: 3rem 0;
+  margin-bottom: 5rem;
 }
 
 .current-weather .weather-left, 
 .current-weather .weather-right {
-  padding: 3rem 0;
+  padding: 1.5rem 0;
   width: 35%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   border-radius: 30px;
-  box-shadow: -2px 0px 32px 8px rgba(0,0,0,0.25);
-  -webkit-box-shadow: -2px 0px 32px 8px rgba(0,0,0,0.25);
-  -moz-box-shadow: -2px 0px 32px 8px rgba(0,0,0,0.25);
+  box-shadow: 0px 0px 10px 5px rgb(0 0 0 / 25%);
+  -webkit-box-shadow: 0px 0px 10px 5px rgb(0 0 0 / 25%);
+  -moz-box-shadow: 0px 0px 10px 5px rgb(0 0 0 / 25%);
 }
 
 .current-weather .weather-right {
-    flex-direction: row;
-    padding: 1rem 0;
+  flex-direction: row;
+  padding: 1rem 0;
 }
 
-.current-weather .weather-left .info {
+.current-weather .weather-left .info,
+.current-weather .weather-right .parameters {
   color: var(--primary);
+}
+
+.current-weather .weather-left .info.name {
+  text-align: center;
+}
+
+.current-weather .weather-left .description {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.weather-left .description .info {
+  word-break: break-word;
+  text-align: center;
 }
 
 .current-weather .weather-right .parameters, 
@@ -42,35 +58,35 @@
 }
 
 .current-weather .weather-right .value { 
-    background-color: var(--primary);
-    color: var(--contrast);
-    border-radius: 30px;
+  background-color: var(--primary);
+  color: var(--contrast);
+  border-radius: 30px;
 }
 
-  /* MEDIA QUERY */
-  @media screen and (max-width: 991px) {
-    .current-weather { 
-      align-items: center;
-      justify-content: flex-start;
-      flex-direction: column;
-    }
-
-    .current-weather .weather-left, 
-    .current-weather .weather-right {
-      padding: 1rem 0;
-      width: 80%;
-      margin-top: 2rem;
-    }
-
-    .current-weather .weather-right .parameters, 
-    .current-weather .weather-right .value {
-      align-items: center;
-    }
-
-    .current-weather .weather-right .parameters h5, 
-    .current-weather .weather-right .value h5 {
-      margin-top: 0.5rem;
-      padding-bottom: 0.5;
-    }
+/* MEDIA QUERY */
+@media screen and (max-width: 991px) {
+  .current-weather { 
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
   }
-  /* /MEDIA QUERY */
+
+  .current-weather .weather-left, 
+  .current-weather .weather-right {
+    padding: 1rem 0;
+    width: 80%;
+    margin-top: 2rem;
+  }
+
+  .current-weather .weather-right .parameters, 
+  .current-weather .weather-right .value {
+    align-items: center;
+  }
+
+  .current-weather .weather-right .parameters h5, 
+  .current-weather .weather-right .value h5 {
+    margin-top: 0.5rem;
+    padding-bottom: 0.5;
+  }
+}
+/* /MEDIA QUERY */

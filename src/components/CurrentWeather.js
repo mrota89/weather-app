@@ -1,47 +1,56 @@
 import React from 'react';
 import './css/CurrentWeather.css';
 
-const CurrentWeather = ({dt, temp_min, temp_max, main, icon}) => {
-  // create a date object with Date class constructor
-  const date = new Date(dt);
+const CurrentWeather = ({actualWeather}) => {
+  const main = actualWeather.main;
+  const weather = actualWeather.weather;
+  const date = new Date(actualWeather.dt * 1000);
   return (
-    <div className="current-weather">
-      <div className="weather-left">
-        
-        <h3 className="info">
-            Roma
-        </h3>
+    <>
+      <h4 className="text-center wmb-2 wmt-2">
+        Oggi - {date.toLocaleDateString()}
+      </h4>
+      <div className="current-weather">
+        <div className="weather-left">
 
-        <h1 className="info">
-            30 °C
-        </h1>
+          <h3 className="info name">
+            {actualWeather.name}
+          </h3>
 
-        <h3 className="info">
-            Nuvoloso
-        </h3>
-      </div>
+          <h1 className="info">
+            {Math.round(main.temp)} °C
+          </h1>
 
-      <div className="weather-right">
-        <div className="parameters">
-            <h5>Temp. perc.</h5>
-            <h5>Umidità</h5>
-            <h5>Vento</h5>
-            <h5>Visibilità</h5>
-            <h5>Max</h5>
-            <h5>Min</h5>
+          <div className="description">
+            <h4 className="info">
+              {weather[0].description}
+            </h4>
+            <img src={`http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`} alt="weather-icon"/>
+          </div>
         </div>
 
-        <div className="value">
-            <h5>32.6 °C</h5>
-            <h5>50%</h5>
-            <h5>13.5 km/h</h5>
-            <h5>10 km</h5>
-            <h5>32.7 °C</h5>
-            <h5>28.9 °C</h5>
+        <div className="weather-right">
+          <div className="parameters">
+              <h5>Temp. perc.</h5>
+              <h5>Umidità</h5>
+              <h5>Vento</h5>
+              <h5>Press. atm.</h5>
+              <h5>Temp. Max</h5>
+              <h5>Temp. Min</h5>
+          </div>
+
+          <div className="value">
+              <h5>{Math.round(main.feels_like)} °C</h5>
+              <h5>{main.humidity} %</h5>
+              <h5>{Math.round(actualWeather.wind.speed)} km/h</h5>
+              <h5>{main.pressure} hPa</h5>
+              <h5>{Math.round(main.temp_max)} °C</h5>
+              <h5>{Math.round(main.temp_min)} °C</h5>
+          </div>
+          
         </div>
-        
       </div>
-    </div>
+    </>
   );
 };
 

@@ -1,27 +1,40 @@
 import { useEffect, useState} from 'react';
 import axios from 'axios';
 
-const useFetch = (initialUrl) => {
-  const [obj, setObj] = useState({});
+const useFetch = (firstUrl, secondUrl) => {
+  const [obj, setObj] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [url, setUrl] = useState(initialUrl);
+  const [urls, setUrls] = useState([firstUrl, secondUrl]);
 
   useEffect(() => {
    
 
     const fetchObj = async () => {
       try {
-        if(!url) return;
         setLoading(true);
-        
-        const response  = await axios.get(url);
-        setLoading(false);
-        if(response.data.cod >= 400) {
-            setError(response.data.message);
+
+        let firstResponse = null;
+        let secondResponse = null;
+
+        if(urls[0] !== undefined && urls[1] !== undefined) {
+
+          firstResponse  = await axios.get(urls[0]);
+          secondResponse  = await axios.get(urls[1]);
+
+          const responses = [];
+          responses.push(firstResponse, secondResponse);
+
+          setLoading(false);
+
+          if (firstResponse['data']['message'] >= 400) {
+            setError(firstResponse['data']['message']);
             return;
+          }
+          setObj(responses);
         }
-        setObj(response);
+        setLoading(false);
+    
       } catch (error) {
         setLoading(false);
         setError(error);
@@ -29,13 +42,13 @@ const useFetch = (initialUrl) => {
     };
 
     fetchObj();
-  }, [url]);
+  }, [urls]);
 
   return {
     obj,
     error,
     loading,
-    setUrl
+    setUrls
   };
 };
 
