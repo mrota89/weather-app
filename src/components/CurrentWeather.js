@@ -11,7 +11,7 @@ const CurrentWeather = ({actualWeather}) => {
         Oggi - {date.toLocaleDateString()}
       </h4>
       <div className="current-weather">
-        <div className="weather-left">
+        <div className="weather-left card-box-shadow">
 
           <h3 className="info name">
             {actualWeather.name}
@@ -29,7 +29,7 @@ const CurrentWeather = ({actualWeather}) => {
           </div>
         </div>
 
-        <div className="weather-right">
+        <div className="weather-right card-box-shadow">
           <div className="parameters">
               <h5>Temp. perc.</h5>
               <h5>Umidità</h5>

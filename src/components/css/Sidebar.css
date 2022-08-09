@@ -1,0 +1,99 @@
+.bm-burger-button {
+  position: absolute;
+  width: 36px;
+  height: 30px;
+  left: 220px;
+  top: 20px;
+}
+  
+.bm-burger-bars {
+  background: var(--contrast);
+}
+
+.bm-burger-bars-hover {
+  background: var(--primary);
+}
+
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+.bm-cross {
+  background: var(--primary);
+}
+
+.bm-menu-wrap {
+  position: fixed;
+  height: 100%;
+  left: 0px;
+}
+
+.bm-menu {
+  background: var(--contrast);
+  padding: 2.5em 1.5em 0;
+  font-size: 1rem;
+}
+
+.bm-morph-shape {
+  fill: var(--details);
+}
+
+.bm-item-list {
+  color: var(--primary);
+  padding: 0.8em;
+}
+
+.bm-item-list h4 {
+  margin-bottom: .5rem;
+  text-align: center;
+}
+
+.bm-item-list h5 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.bm-item-list p {
+  margin: .5rem 0;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.bm-item-list p:hover{
+  cursor: pointer;
+  text-shadow: 0px 0px 3px rgba(150, 150, 150, 1);
+}
+
+.bm-item {
+  display: inline-block;
+}
+
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/*media query*/
+@media screen and (min-width: 1920px) {
+  .bm-burger-button {
+    left: 440px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .bm-burger-button {
+    left: 75px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .bm-burger-button {
+    left: 30px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .bm-burger-button {
+    left: 15px;
+  }
+}

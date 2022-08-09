@@ -2,24 +2,30 @@ import React, {useState} from 'react';
 import './css/SearchCity.css';
 
 const SearchCity = ({onSearch}) => {
-    const [city, setCity] = useState('');
-    const onEnter = (event) => {
-      if (event.keyCode === 13) {
-        onSearch(city);
-      }
-    };
 
-    return (
-      <div className="search-bar">
+  const [city, setCity] = useState('');
+
+  return (
+    <div className="search-bar">
+      <form
+        onSubmit={event => {
+          event.preventDefault();
+          onSearch(city);
+          setCity('');
+        }}
+      >
         <input
-          placeholder="Città"
-          onChange={(event) => setCity(event.target.value)}
-          onKeyDown={onEnter}
+          className="card-box-shadow"
+          placeholder="Il meteo della tua città..."
+          onChange={(event) => setCity(
+            event.target.value
+          )}
           value={city}
         />
-        <button onClick={() => onSearch(city)}>Cerca</button>
-      </div>
-    );
-  };
+      </form>
+      <button className="card-box-shadow" onClick={() => onSearch(city)}>Cerca</button>
+    </div>
+  );
+};
 
 export default SearchCity;

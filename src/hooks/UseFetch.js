@@ -8,8 +8,7 @@ const useFetch = (firstUrl, secondUrl) => {
   const [urls, setUrls] = useState([firstUrl, secondUrl]);
 
   useEffect(() => {
-   
-
+    
     const fetchObj = async () => {
       try {
         setLoading(true);
@@ -29,7 +28,6 @@ const useFetch = (firstUrl, secondUrl) => {
 
           if (firstResponse['data']['message'] >= 400) {
             setError(firstResponse['data']['message']);
-            return;
           }
           setObj(responses);
         }

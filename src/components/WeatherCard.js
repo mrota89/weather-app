@@ -4,9 +4,9 @@ import './css/WeatherCard.css';
 const WeatherCard = ({dt, temp_min, temp_max, main, icon}) => {
   const date = new Date(dt * 1000);
   return (
-    <div className="weather-card-content">
+    <div className="weather-card-content card-box-shadow">
       <div className="card-title">
-        <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`}/>
+        <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt="weather-logo"/>
         <h5 className="text-center">{date.toLocaleDateString('it-IT', {weekday: 'long'})}</h5>
         <h5 className="text-center wmy-1">{date.toLocaleDateString()}</h5>
       </div>

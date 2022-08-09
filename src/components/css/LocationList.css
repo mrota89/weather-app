@@ -1,0 +1,9 @@
+.location-list .list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.location-list .list-item .delete:hover{
+    cursor: pointer;
+}

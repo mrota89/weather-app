@@ -14,25 +14,24 @@ const WeatherList = ({weathers}) => {
         return today = dd + '/' + mm + '/' + yyyy;
     }
     const currentDate = getCurrentDate();
-    console.log(currentDate)
     const filteredForecast = weathers.filter((item) =>new Date(item.dt * 1000).toLocaleDateString() !== currentDate)
 
     return (
         <>
-        <h4 className="text-center wmb-2">Previsioni per i prossimi 5 giorni</h4>
-        <div className="weather-list">
-            {filteredForecast.map(({dt, temp, weather}) => (
-                <div className="weather-card" key={dt}>
-                <WeatherCard 
-                    temp_max={Math.round(temp.max)} 
-                    temp_min={Math.round(temp.min)} 
-                    dt={dt} 
-                    main={weather[0].description} 
-                    icon={weather[0].icon} 
-                    />
-                </div>
-            ))} 
-        </div>
+            <h4 className="text-center wmb-2">Previsioni per i prossimi 5 giorni</h4>
+            <div className="weather-list">
+                {filteredForecast.map(({dt, temp, weather}) => (
+                    <div className="weather-card" key={dt}>
+                    <WeatherCard 
+                        temp_max={Math.round(temp.max)} 
+                        temp_min={Math.round(temp.min)} 
+                        dt={dt} 
+                        main={weather[0].description} 
+                        icon={weather[0].icon} 
+                        />
+                    </div>
+                ))} 
+            </div>
         </>
     )
 }
