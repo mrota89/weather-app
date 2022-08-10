@@ -6,6 +6,7 @@
     justify-content: center;
     background-color: var(--secondary);
     font-size: 1.2rem;
+    position: relative;
 }
 
 .search-bar input, .search-bar button {
@@ -28,4 +29,8 @@
     border-bottom-right-radius: 10px;
     background-color: var(--primary);
     color: var(--contrast);
+}
+
+.search-bar button:hover {
+    cursor: pointer;
 }

@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './css/SearchCity.css';
 
-const SearchCity = ({onSearch}) => {
-
+//component con input per ricerca delle informazioni meteo
+const SearchCity = ({onSearch, dataLocationList}) => {
   const [city, setCity] = useState('');
+  const [locationList, setLocationList] = useState([]);
 
   return (
     <div className="search-bar">
@@ -16,12 +17,19 @@ const SearchCity = ({onSearch}) => {
       >
         <input
           className="card-box-shadow"
-          placeholder="Il meteo della tua città..."
+          placeholder="Cerca località..."
+          autoComplete="off"
+          list="location-list"
+          value={city}
           onChange={(event) => setCity(
             event.target.value
           )}
-          value={city}
         />
+        <datalist id="location-list">
+          {dataLocationList.map((location, index) => (
+            <option value={location} key={index.toString()}/>
+          ))}
+        </datalist>
       </form>
       <button className="card-box-shadow" onClick={() => onSearch(city)}>Cerca</button>
     </div>

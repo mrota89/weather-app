@@ -1,10 +1,12 @@
 import React from 'react';
 import './css/CurrentWeather.css';
 
+//sezione superiore della pagina principale contenente la situazione meteo del giorno
 const CurrentWeather = ({actualWeather}) => {
   const main = actualWeather.main;
   const weather = actualWeather.weather;
   const date = new Date(actualWeather.dt * 1000);
+  
   return (
     <>
       <h4 className="text-center wmb-2 wmt-2">
@@ -47,7 +49,6 @@ const CurrentWeather = ({actualWeather}) => {
               <h5>{Math.round(main.temp_max)} °C</h5>
               <h5>{Math.round(main.temp_min)} °C</h5>
           </div>
-          
         </div>
       </div>
     </>

@@ -1,19 +1,12 @@
 import React from 'react';
-import"./css/LocationList.css"
 
-const LocationList = ({ locationList, deleteLocation, childToParent }) => (
-  
-  <div className="location-list">
+//component per render lista città preferite
+const LocationList = ({ locationList, deleteLocation }) => (
+  <div className="location-list wmt-1">
     {locationList.map((location, index) => (
-      <div className="list-item" key="index">
-        <p
-        onClick={() => {
-          childToParent(location)
-        }}
-        >{location}</p>
-        
-        <div 
-          className="delete"
+      <div className="list-item" key={index.toString()}>
+        <p>{location}</p>
+        <div className="delete"
           onClick={() => {
             deleteLocation(index);
           }}

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import "./css/LocationListForm.css"
 
+//component con form per aggiunta città preferite
 const LocationListForm = ({ saveLocation }) => {
   const [value, setValue] = useState('');
+  
   return (
     <form
       onSubmit={event => {
@@ -11,12 +12,14 @@ const LocationListForm = ({ saveLocation }) => {
         setValue('');
       }}
     >
-      <input className="location-form"
-        placeholder="Aggiungi una città..."
+      <input 
+        className="location-form"
+        placeholder="Scrivi una località e premi Invio"
+        autoComplete="off"
+        value={value}
         onChange={event => {
           setValue(event.target.value);
         }}
-        value={value}
       />
     </form>
   );

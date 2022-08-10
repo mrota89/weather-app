@@ -60,7 +60,7 @@
   border-radius: 30px;
 }
 
-/* MEDIA QUERY */
+/* media query*/
 @media screen and (max-width: 991px) {
   .current-weather { 
     align-items: center;
@@ -86,4 +86,3 @@
     padding-bottom: 0.5;
   }
 }
-/* /MEDIA QUERY */

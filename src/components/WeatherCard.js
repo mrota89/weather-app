@@ -1,6 +1,7 @@
 import React from 'react';
 import './css/WeatherCard.css';
 
+//component per render singola card delle previsoni meteo sui 5 giorni 
 const WeatherCard = ({dt, temp_min, temp_max, main, icon}) => {
   const date = new Date(dt * 1000);
   return (

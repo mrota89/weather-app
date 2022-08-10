@@ -47,7 +47,31 @@
   padding: 0;
 }
 
+/*style per component aggiunta e gestione lista città preferite*/
+.location-list .list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1.5px solid var(--details);
+}
 
+.location-list .list-item:last-child {
+  border-bottom: none;
+}
+
+.location-list .list-item .delete:hover{
+  cursor: pointer;
+}
+
+form input.location-form {
+  border-radius: 10px;
+  height: 35px;
+  padding: 5px;
+  width: 100%;
+}
+/*end style per component aggiunta e gestione lista città preferite*/
+
+/*media query*/
 @media screen and (max-width: 1024px) {
   .m-container {
     height: fit-content;
