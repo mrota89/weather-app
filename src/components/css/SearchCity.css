@@ -31,6 +31,15 @@
     color: var(--contrast);
 }
 
+.search-bar button:disabled {
+    background-color: var(--details);
+    color: var(--contrast);
+}
+
 .search-bar button:hover {
     cursor: pointer;
+}
+
+.search-bar button:disabled:hover {
+    cursor: not-allowed;
 }

@@ -25,7 +25,9 @@ const SearchCity = ({onSearch}) => {
       <form
         onSubmit={event => {
           event.preventDefault();
-          onSearch(city);
+          if(city.length > 0) {
+            onSearch(city);
+          }
           setCity('');
         }}
       >
@@ -37,16 +39,9 @@ const SearchCity = ({onSearch}) => {
           value={city}
           onChange={(event) => {
             //controllo input utente
-            if(regexLocationName.test(event.target.value)) {
-              /*aggiungo questo controllo perchè l'api del meteo 
-              restituisce solo i dati per la città di Rome (Stati Uniti)
-              (e da italiano mi sentivo offeso)
-              */
-              if(event.target.value.toLowerCase() === "roma") {
-                setCity("Roma capitale");
-              } else {
-                setCity(event.target.value);
-              }
+            const input = event.target.value;
+            if(regexLocationName.test(input)) {
+              setCity(input);
             } else{
               alert(["Attenzione: non sono ammessi numeri e caratteri speciali"])
             }
@@ -58,7 +53,10 @@ const SearchCity = ({onSearch}) => {
           ))}
         </datalist>
       </form>
-      <button className="card-box-shadow" onClick={() => onSearch(city)}>Cerca</button>
+      <button disabled={city.length > 0 ? false : true } className="card-box-shadow" 
+      onClick={() => onSearch(city)}>
+        Cerca
+      </button>
     </div>
   );
 };
