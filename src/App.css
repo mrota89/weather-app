@@ -25,8 +25,9 @@
 }
 
 .welcome-page h1 {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   color: var(--contrast);
+  font-size: 4rem;
 }
 
 .welcome-page .search-bar {
@@ -35,11 +36,11 @@
 
 .welcome-page .search-bar input, 
 .welcome-page .search-bar button {
-  height: 100px;
+  height: 60px;
   width: 100%;
   border: none;
-  padding: 30px;
-  font-size: 3rem;
+  padding: 20px;
+  font-size: 2rem;
 }
 
 .welcome-page .search-bar button {

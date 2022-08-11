@@ -49,9 +49,13 @@
   text-align: center;
 }
 
-.bm-item-list h5 {
-  margin-bottom: 1rem;
+.bm-item-list small {
+  margin: .5rem 0;
   text-align: center;
+}
+
+.bm-item-list small:last-of-type{
+  margin-bottom: 1rem;
 }
 
 .bm-item-list p {

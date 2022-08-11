@@ -1,4 +1,4 @@
-import React , {useEffect, useState} from 'react';
+import React from 'react';
 import SearchCity from './components/SearchCity';
 import CurrentWeather from './components/CurrentWeather';
 import Sidebar from './components/Sidebar';
@@ -9,16 +9,7 @@ import WeatherList from './components/WeatherList';
 
 const App = () => {
   const {arrayResponses, error, loading, setUrls} = UseFetch();
-  const [locationList, setLocationList] = useState([]);
-  /*aggiorna "in tempo reale" il datalist ad ogni 
-  modifica della lista località preferite*/
-  useEffect(() => { 
-    const locations = JSON.parse(localStorage.getItem("locationStorage"));
-    if (locations) {
-      setLocationList(locations);
-    }
-  }, []);
-
+ 
   const getContent = () => {
     if(error) {
       //gestione errori chiamate ajax
@@ -38,7 +29,7 @@ const App = () => {
       return(
         <div className="welcome-page">
           <h1>InfoWeather.com</h1>
-          <SearchCity dataLocationList={locationList} onSearch={(city) => setUrls([
+          <SearchCity onSearch={(city) => setUrls([
             `${API_BASE_URL}/data/2.5/forecast/daily?q=${city}&cnt=6&appid=${API_KEY}&units=metric&lang=it`, 
             `${API_BASE_URL}/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=it`
           ])}/>
@@ -60,7 +51,7 @@ const App = () => {
   return (
     <div className="m-container card-box-shadow">
       <Sidebar pageWrapId={'page-wrap'} outerContainerId={'outer-container'}/>
-      {arrayResponses.length > 0 && <SearchCity dataLocationList={locationList} onSearch={(city) => setUrls([
+      {arrayResponses.length > 0 && <SearchCity onSearch={(city) => setUrls([
         `${API_BASE_URL}/data/2.5/forecast/daily?q=${city}&cnt=6&appid=${API_KEY}&units=metric&lang=it`, 
         `${API_BASE_URL}/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=it`
       ])}/>}

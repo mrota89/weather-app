@@ -24,7 +24,8 @@ const Sidebar = () => {
   return (
     <Menu>
         <h4>I tuoi preferiti</h4>
-        <h5>Puoi salvare un massimo di cinque località</h5>
+        <small>Puoi salvare un massimo di cinque località</small>
+        <small>Troverai le località salvate nei suggerimenti della barra di ricerca</small>
         <LocationListForm saveLocation={locationName => {
           if(locationName.length >0 && regexLocationName.test(locationName)) {
             const trimmedLocationName = locationName.trim().toUpperCase();
