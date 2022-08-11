@@ -38,8 +38,18 @@ const SearchCity = ({onSearch}) => {
           onChange={(event) => {
             //controllo input utente
             if(regexLocationName.test(event.target.value)) {
-              setCity(event.target.value);
-            } 
+              /*aggiungo questo controllo perchè l'api del meteo 
+              restituisce solo i dati per la città di Rome (Stati Uniti)
+              (e da italiano mi sentivo offeso)
+              */
+              if(event.target.value.toLowerCase() === "roma") {
+                setCity("Roma capitale");
+              } else {
+                setCity(event.target.value);
+              }
+            } else{
+              alert(["Attenzione: non sono ammessi numeri e caratteri speciali"])
+            }
           }}
         />
         <datalist id="location-list">

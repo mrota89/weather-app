@@ -9,14 +9,23 @@ import WeatherList from './components/WeatherList';
 
 const App = () => {
   const {arrayResponses, error, loading, setUrls} = UseFetch();
- 
+  const reloadPage = () =>{
+    setTimeout(()=> {window.location.reload()}, 8000);
+  }
+
   const getContent = () => {
     if(error) {
-      //gestione errori chiamate ajax
+      //avvio setTimeout per reload della pagina in caso di errore
+      reloadPage();
       return (
-      <div className="error-page">
-        <h3>Oops!<br/>Qualcosa è andato storto:<br/>{error.message}</h3>
-      </div> ) 
+        <div className="error-page">
+          <h3>
+            Oops!<br/>Qualcosa è andato storto:<br/>{error.message}<br/>
+            <small>Entro pochi secondi sarai indirizzato alla homepage</small>
+          </h3>
+        </div> 
+      )
+      
     } else if(arrayResponses.length > 0 && loading) {
       //mostra schermata di caricamento durante chiamata ajax
       return ( 

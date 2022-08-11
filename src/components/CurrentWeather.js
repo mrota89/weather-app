@@ -6,7 +6,7 @@ const CurrentWeather = ({actualWeather}) => {
   const main = actualWeather.main;
   const weather = actualWeather.weather;
   const date = new Date(actualWeather.dt * 1000);
-  
+  console.log(actualWeather)
   return (
     <>
       <h4 className="text-center wmb-2 wmt-2">
@@ -16,7 +16,7 @@ const CurrentWeather = ({actualWeather}) => {
         <div className="weather-left card-box-shadow">
 
           <h3 className="info name">
-            {actualWeather.name}
+            {actualWeather.name}, {actualWeather.sys.country}
           </h3>
 
           <h1 className="info">

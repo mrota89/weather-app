@@ -12,6 +12,7 @@ const useFetch = (firstUrl, secondUrl) => {
     const fetchArrayResponses = async () => {
       try {
         setLoading(true);
+        setError(false);
 
         let firstResponse = {};
         let secondResponse = {};
@@ -28,8 +29,8 @@ const useFetch = (firstUrl, secondUrl) => {
 
           setLoading(false);
 
-          //se cod errore >= 400, salvo messaggio per mostrarlo all'utente nella error page 
-          if (firstResponse['data']['message'] >= 400) {
+          //salvo messaggio per mostrarlo all'utente nella error page 
+          if (firstResponse['data']['message'] >= 400 || firstResponse['data']['message'] >= 500) {
             setError(firstResponse['data']['message']);
           }
           //setto l'array popolato nella variabile di stato

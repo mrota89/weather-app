@@ -6,9 +6,7 @@ import LocationList from './LocationList';
 
 //sidebar contenete form e lista per gestione città preferite
 const Sidebar = () => {
-  //esclude numeri e carratteri speciali
-  const regexLocationName = new RegExp(/^[ a-zA-ZÀ-ÿ\u00f1\u00d1\u0027\u203e]*$/g);
-    
+
   //setto variabile di stato con dati presi dal locationStorage. Se non ci sono dati, allora array vuoto
   const [locationList, setLocationList] = useState(() => {
     const savedLocation = localStorage.getItem("locationStorage");
@@ -25,15 +23,15 @@ const Sidebar = () => {
     <Menu>
         <h4>I tuoi preferiti</h4>
         <small>Puoi salvare un massimo di cinque località</small>
-        <small>Troverai le località salvate nei suggerimenti della barra di ricerca</small>
+        <small>Troverai le località nei suggerimenti della barra di ricerca</small>
         <LocationListForm saveLocation={locationName => {
-          if(locationName.length >0 && regexLocationName.test(locationName)) {
+          if(locationName.length >0) {
             const trimmedLocationName = locationName.trim().toUpperCase();
             //attivazione alert su controllo input utente
             if(locationList.includes(trimmedLocationName)) {
-              return alert(["Attenzione! città già presente nella lista"])
+              return alert(["Attenzione! città già presente nella lista"]);
             } else if (locationList.length === 5) {
-              return alert(["Attenzione! Puoi salvare al massimo cinque città"])
+              return alert(["Attenzione! Puoi salvare al massimo cinque città"]);
             } else {
               setLocationList([...locationList, trimmedLocationName]);
             }
