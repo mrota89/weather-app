@@ -1,57 +1,54 @@
-import { useEffect, useState} from 'react';
+import { useState, useCallback } from 'react';
 import axios from 'axios';
+import { API_KEY, API_BASE_URL } from '../api/config'
 
 const useFetch = (firstUrl, secondUrl) => {
   const [arrayResponses, setArrayResponses] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [urls, setUrls] = useState([firstUrl, secondUrl]);
 
-  useEffect(() => {
-    
-    const fetchArrayResponses = async () => {
-      try {
+  const getWeather = useCallback(async (city) => {
+    const urls = [
+      `${API_BASE_URL}/data/2.5/forecast/daily?q=${city}&cnt=6&appid=${API_KEY}&units=metric&lang=it`,
+      `${API_BASE_URL}/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric&lang=it`
+    ];
+
+    setError(false);
+    try {
+      let firstResponse = {};
+      let secondResponse = {};
+
+      if (urls[0] !== undefined && urls[1] !== undefined) {
         setLoading(true);
-        setError(false);
 
-        let firstResponse = {};
-        let secondResponse = {};
+        //salvo le response...
+        firstResponse = await axios.get(urls[0]);
+        secondResponse = await axios.get(urls[1]);
 
-        if(urls[0] !== undefined && urls[1] !== undefined) {
+        setLoading(false);
 
-          //salvo le response...
-          firstResponse  = await axios.get(urls[0]);
-          secondResponse  = await axios.get(urls[1]);
+        //...e le pusho in un array
+        const responses = [];
+        responses.push(firstResponse, secondResponse);
 
-          //...e le pusho in un array
-          const responses = [];
-          responses.push(firstResponse, secondResponse);
-
-          setLoading(false);
-
-          //salvo messaggio per mostrarlo all'utente nella error page 
-          if (firstResponse['data']['message'] >= 400 || firstResponse['data']['message'] >= 500) {
-            setError(firstResponse['data']['message']);
-          }
-          //setto l'array popolato nella variabile di stato
-          setArrayResponses(responses);
+        //salvo messaggio per mostrarlo all'utente nella error page 
+        if (firstResponse['data']['message'] >= 400 || firstResponse['data']['message'] >= 500) {
+          setError(firstResponse['data']['message']);
         }
-        setLoading(false);
-    
-      } catch (error) {
-        setLoading(false);
-        setError(error);
+        //setto l'array popolato nella variabile di stato
+        setArrayResponses(responses);
       }
-    };
-
-    fetchArrayResponses();
-  }, [urls]);
+    } catch (error) {
+      setLoading(false);
+      setError(error);
+    }
+  }, []);
 
   return {
     arrayResponses,
     error,
     loading,
-    setUrls
+    getWeather,
   };
 };
 

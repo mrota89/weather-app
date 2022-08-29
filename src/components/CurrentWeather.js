@@ -6,7 +6,6 @@ const CurrentWeather = ({actualWeather}) => {
   const main = actualWeather.main;
   const weather = actualWeather.weather;
   const date = new Date(actualWeather.dt * 1000);
-  console.log(actualWeather)
   return (
     <>
       <h4 className="text-center wmb-2 wmt-2">

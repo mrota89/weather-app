@@ -2,79 +2,82 @@
 styling generico
 ***************/
 :root {
-    --primary: #1b317c;
-    --details: #ccc9dc;
-    --secondary: #3685b5;
-    --contrast: #fff;
+  --primary: #1b317c;
+  /* --secondary: #41d3bd; */
+  --secondary: #bbbdf6;
+  --secondary: #f1dac4;
+  --secondary: #99d5c9;
+  /* --details: #fcdebe; */
+  --details: #131200;
+  --details: #eee;
+  --contrast: #fff;
 }
 
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
 }
 
 body {
-    background-color: var(--details);
+  background-color: var(--details);
 }
 
 h1 {
-    font-size: 6rem;
+  font-size: 6rem;
 }
- 
+
 h3 {
-    font-size: 3rem;
+  font-size: 3rem;
 }
 
 h4 {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 h5 {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
 .text-center {
-    text-align: center;
+  text-align: center;
 }
 
 .wmy-1 {
-    margin: .5rem 0;
+  margin: 0.5rem 0;
 }
 
 .wmt-1 {
-    margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 .wmb-2 {
-    margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .wmt-2 {
-    margin-top: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .card-box-shadow {
-    box-shadow: 0px 0px 32px 4px rgba(0,0,0,0.3);
-    -webkit-box-shadow: 0px 0px 32px 4px rgba(0,0,0,0.3);
-    -moz-box-shadow: 0px 0px 32px 4px rgba(0,0,0,0.3);
+  box-shadow: 0px 0px 16px 2px rgba(33, 33, 33, 0.1);
+  -webkit-box-shadow: 0px 0px 16px 2px rgba(33, 33, 33, 0.1);
+  -moz-box-shadow: 0px 0px 16px 2px rgba(33, 33, 33, 0.1);
 }
 
 /*media query*/
 @media screen and (max-width: 768px) {
+  h1 {
+    font-size: 5rem;
+  }
 
-    h1 {
-        font-size: 5rem;
-    }
-     
-    h3 {
-        font-size: 2rem;
-    }
+  h3 {
+    font-size: 2rem;
+  }
 
-    h4 {
-        font-size: 1.2rem;
-    }
+  h4 {
+    font-size: 1.2rem;
+  }
 }
-

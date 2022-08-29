@@ -20,7 +20,7 @@
 .weather-card-content .card-body {
     background-color: var(--primary);
     color: var(--contrast);
-    border-radius: 30px;
+    border-radius: calc(30px - .5rem);
     height: 35%;
     padding: .5rem;
 }
