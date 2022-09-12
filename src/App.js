@@ -1,28 +1,32 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-
+import { API_KEY, API_BASE_URL } from './api/config'
 import CurrentWeather from './components/CurrentWeather';
 import SearchCity from './components/SearchCity';
 import Sidebar from './components/Sidebar';
 import WeatherList from './components/WeatherList';
 import UseFetch from './hooks/UseFetch';
+import axios from 'axios';
 import './App.css';
 
 const App = () => {
   const firstUpdate = useRef(true);
   const [locationList, setLocationList] = useState(() => JSON.parse(localStorage.getItem("locationStorage")) || []);
-  const { arrayResponses, error, loading, getWeather } = UseFetch();
+  const { weatherResponse, error, loading, getWeather } = UseFetch();
 
   const onSearch = useCallback((city) => {
     getWeather(city);
   }, [getWeather]);
 
-  const addLocationToList = useCallback((location) => {
-    console.log("adding location " + location);
-    setLocationList((prev) => [...prev, location]);
+  const addLocationToList = useCallback(async (location) => {
+    const cityGeoCoding = await axios.get(`${API_BASE_URL}/geo/1.0/direct?q=${location}&limit=1&appid=${API_KEY}`);
+    if(cityGeoCoding['data'].length > 0) {
+      setLocationList((prev) => [...prev, location]);
+    } else {
+      return alert(["Attenzione! la località inserita non esiste!"]);
+    }
   }, []);
 
   const removeLocationAtIndex = useCallback((index) => {
-    console.log("removing location " + index);
     setLocationList((prev) => prev.filter((_, i) => i !== index));
   }, []);
 
@@ -31,9 +35,7 @@ const App = () => {
       firstUpdate.current = false;
       return;
     }
-    console.log(locationList);
-    localStorage.setItem("locationStorage", JSON.stringify(locationList))
-    console.log("localstorage aggiornato")
+    localStorage.setItem("locationStorage", JSON.stringify(locationList));
   }, [locationList]);
 
   return (
@@ -64,14 +66,14 @@ const App = () => {
         </div>
       )}
 
-      {arrayResponses.length > 0 && (
+      {weatherResponse != null && (
         <>
-          <CurrentWeather actualWeather={arrayResponses[1]['data']} />
-          <WeatherList weathers={arrayResponses[0]['data']['list']} />
+          <CurrentWeather actualWeather={weatherResponse['data']['current']} />
+          <WeatherList weathers={weatherResponse['data']['daily']} />
         </>
       )}
 
-      {arrayResponses.length === 0 && (
+      {weatherResponse == null && (
         <div className="welcome-page">
           <h1>InfoWeather.com</h1>
         </div>

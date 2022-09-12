@@ -6,25 +6,14 @@ import './css/WeatherList.css';
 contenente le previsioni per i 5 giorni sucessivi 
 alla data attuale */
 const WeatherList = ({weathers}) => {
-
-    const getCurrentDate = () => {
-        let today = new Date();
-        let dd = String(today.getDate());
-        let mm = String(today.getMonth() + 1);
-        let yyyy = today.getFullYear();
-
-        return today = dd + '/' + mm + '/' + yyyy;
-    }
-
-    //verifico il giorno corrente e filtro l'array in ingresso per ottenere lista previsioni dei 5 giorni successivi
-    const currentDate = getCurrentDate();
-    const filteredForecast = weathers.filter((item) =>new Date(item.dt * 1000).toLocaleDateString() !== currentDate)
+    
+    const slicedForecast = weathers.slice(1,6);
 
     return (
         <>
         <h4 className="text-center wmb-2">Previsioni per i prossimi 5 giorni</h4>
         <div className="weather-list">
-            {filteredForecast.map(({dt, temp, weather}) => (
+            {slicedForecast.map(({dt, temp, weather}) => (
                 <div className="weather-card" key={dt}>
                     <WeatherCard 
                         temp_max={Math.round(temp.max)} 

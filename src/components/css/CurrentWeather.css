@@ -57,7 +57,7 @@
 .current-weather .weather-right .value { 
   background-color: var(--primary);
   color: var(--contrast);
-  border-radius: 30px;
+  border-radius: calc(30px - 0.5rem);
 }
 
 /* media query*/

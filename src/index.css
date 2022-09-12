@@ -3,11 +3,9 @@ styling generico
 ***************/
 :root {
   --primary: #1b317c;
-  /* --secondary: #41d3bd; */
   --secondary: #bbbdf6;
   --secondary: #f1dac4;
   --secondary: #99d5c9;
-  /* --details: #fcdebe; */
   --details: #131200;
   --details: #eee;
   --contrast: #fff;

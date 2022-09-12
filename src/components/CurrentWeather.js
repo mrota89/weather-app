@@ -3,7 +3,6 @@ import './css/CurrentWeather.css';
 
 //sezione superiore della pagina principale contenente la situazione meteo del giorno
 const CurrentWeather = ({actualWeather}) => {
-  const main = actualWeather.main;
   const weather = actualWeather.weather;
   const date = new Date(actualWeather.dt * 1000);
   return (
@@ -15,11 +14,11 @@ const CurrentWeather = ({actualWeather}) => {
         <div className="weather-left card-box-shadow">
 
           <h3 className="info name">
-            {actualWeather.name}, {actualWeather.sys.country}
+            {actualWeather.name}, {actualWeather.country}
           </h3>
 
           <h1 className="info">
-            {Math.round(main.temp)} °C
+            {Math.round(actualWeather.temp)} °C
           </h1>
 
           <div className="description">
@@ -36,17 +35,17 @@ const CurrentWeather = ({actualWeather}) => {
               <h5>Umidità</h5>
               <h5>Vento</h5>
               <h5>Press. atm.</h5>
-              <h5>Temp. Max</h5>
-              <h5>Temp. Min</h5>
+              <h5>Indice UV</h5>
+              <h5>Visibilità</h5>
           </div>
 
           <div className="value">
-              <h5>{Math.round(main.feels_like)} °C</h5>
-              <h5>{main.humidity} %</h5>
-              <h5>{Math.round(actualWeather.wind.speed)} km/h</h5>
-              <h5>{main.pressure} hPa</h5>
-              <h5>{Math.round(main.temp_max)} °C</h5>
-              <h5>{Math.round(main.temp_min)} °C</h5>
+              <h5>{Math.round(actualWeather.feels_like)} °C</h5>
+              <h5>{actualWeather.humidity} %</h5>
+              <h5>{actualWeather.wind_speed} km/h</h5>
+              <h5>{actualWeather.pressure} hPa</h5>
+              <h5>{actualWeather.uvi}</h5>
+              <h5>{actualWeather.visibility / 1000} km</h5>
           </div>
         </div>
       </div>
