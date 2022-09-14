@@ -18,11 +18,24 @@ const App = () => {
   }, [getWeather]);
 
   const addLocationToList = useCallback(async (location) => {
-    const cityGeoCoding = await axios.get(`${API_BASE_URL}/geo/1.0/direct?q=${location}&limit=1&appid=${API_KEY}`);
-    if(cityGeoCoding['data'].length > 0) {
-      setLocationList((prev) => [...prev, location]);
-    } else {
-      return alert(["Attenzione! la località inserita non esiste!"]);
+    try {
+      const cityGeoCoding = await axios.get(`${API_BASE_URL}/geo/1.0/direct?q=${location}&limit=1&appid=${API_KEY}`);
+
+      if(cityGeoCoding["data"][0]) {
+        const dataCityGeoCoding = cityGeoCoding["data"][0];
+        const localNames = dataCityGeoCoding['local_names'];
+        const cityName = ('local_names' in dataCityGeoCoding && 'it' in localNames)?localNames['it']:dataCityGeoCoding['name'];
+      
+        if(cityName.toUpperCase() === location) {
+          setLocationList((prev) => [...prev, location]);
+        } else {
+          return alert([`Attenzione! Forse intendevi questa località: ${cityName.toUpperCase()}`]);
+        }
+      } else {
+        return alert(["Attenzione! La località inserita non esiste!"]);
+      }
+    } catch {
+      alert(["Oops! Qualcosa è andato storto :/"]);
     }
   }, []);
 
