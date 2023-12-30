@@ -21,12 +21,12 @@ const App = () => {
     try {
       const cityGeoCoding = await axios.get(`${API_BASE_URL}/geo/1.0/direct?q=${location}&limit=1&appid=${API_KEY}`);
 
-      if(cityGeoCoding["data"][0]) {
+      if (cityGeoCoding["data"][0]) {
         const dataCityGeoCoding = cityGeoCoding["data"][0];
         const localNames = dataCityGeoCoding['local_names'];
-        const cityName = ('local_names' in dataCityGeoCoding && 'it' in localNames)?localNames['it']:dataCityGeoCoding['name'];
-      
-        if(cityName.toUpperCase() === location) {
+        const cityName = ('local_names' in dataCityGeoCoding && 'it' in localNames) ? localNames['it'] : dataCityGeoCoding['name'];
+
+        if (cityName.toUpperCase() === location) {
           setLocationList((prev) => [...prev, location]);
         } else {
           return alert([`Attenzione! Forse intendevi questa località: ${cityName.toUpperCase()}`]);
@@ -66,7 +66,7 @@ const App = () => {
       {error && (
         <div className="error-page">
           <h3>
-            <span>Oops!<br />Qualcosa è andato storto:<br />{error.message}.</span>
+            <span>Oops!<br />Qualcosa è andato storto :( <br />{error.message}</span>
             <br />
             <button onClick={() => window.location.reload()}>Torna alla homepage</button>
           </h3>
